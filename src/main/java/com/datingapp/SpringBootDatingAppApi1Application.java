@@ -9,5 +9,4 @@ public class SpringBootDatingAppApi1Application {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootDatingAppApi1Application.class, args);
 	}
-
 }
