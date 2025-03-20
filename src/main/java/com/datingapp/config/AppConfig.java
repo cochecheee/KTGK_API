@@ -1,4 +1,4 @@
-package com.datingapp;
+package com.datingapp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
