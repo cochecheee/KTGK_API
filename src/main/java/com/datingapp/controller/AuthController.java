@@ -8,18 +8,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.datingapp.model.LoginRequest;
 import com.datingapp.model.RegisterRequest;
-import com.datingapp.model.RegisterResponse;
-import com.datingapp.service.UserService;
+import com.datingapp.service.AuthenticationService;
+
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
+@Slf4j
 public class AuthController {
 	
 	@Autowired
-	private UserService userService;
+	private AuthenticationService authService;
 	
 	@PostMapping("/api/auth/login")
 	public ResponseEntity<?> login(@RequestBody LoginRequest req) {
-		boolean isSuccess = userService.login(req);
+		boolean isSuccess = authService.login(req);
 		if(isSuccess == true) {
 			return ResponseEntity.ok(req);
 		}else {
@@ -27,13 +29,13 @@ public class AuthController {
 		}
 	}
 	
-	@PostMapping("/api/auth/request-register")
-	public ResponseEntity<?> requestRegister(@RequestBody RegisterRequest req){
-		return ResponseEntity.ok(userService.requestRegister(req));
-	}
+//	@PostMapping("/api/auth/request-register")
+//	public ResponseEntity<?> requestRegister(@RequestBody RegisterRequest req){
+//		return ResponseEntity.ok(authService.requestRegister(req));
+//	}
 	
 	@PostMapping("/api/auth/register")
-	public ResponseEntity<?> register(@RequestBody RegisterResponse req) {
-		return ResponseEntity.ok(userService.register(req));
+	public ResponseEntity<?> register(@RequestBody RegisterRequest req) {
+		return ResponseEntity.ok(authService.register(req));
 	}
 }
